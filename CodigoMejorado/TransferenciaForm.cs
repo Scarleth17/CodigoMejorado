@@ -14,14 +14,22 @@ namespace CodigoMejorado
     //Formulario para solicitar el monto de una transaccion entre dos cuentas
     public partial class TransferenciaForm : Form
     {
-        //
+        // Proveedor de errores para validación en pantalla
         private readonly ErrorProvider _errProvider = new ErrorProvider();
+
+        // Servicio de lógica de negocio para cuentas
         private readonly ServiceCuenta _SC;
+
+        // IDs de la cuenta origen y destino
         private readonly int _CuentaOrigenId;
         private readonly int _CuentaDestinoId;
 
-        // Monto ingresado por el usuario para la transferencia
+        // Monto ingresado por el usuario, accesible públicamente tras la validación
         public decimal Monto { get; private set; }
+
+
+
+        
         public TransferenciaForm( ServiceCuenta serviceCuenta , int cuentaOrigenId,int cuentaDestinoId)
         {
             InitializeComponent();
@@ -29,8 +37,11 @@ namespace CodigoMejorado
             _CuentaOrigenId = cuentaOrigenId;
             _CuentaDestinoId = cuentaDestinoId;
 
-            _errProvider.ContainerControl = this;
-            CargarDatos();
+            _errProvider.ContainerControl = this; // Configura el ErrorProvider para este formulario
+            CargarDatos(); // Muestra información de las cuentas
+
+
+          
         }
 
         private void CargarDatos()

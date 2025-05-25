@@ -12,6 +12,8 @@ namespace CodigoMejorado.Models
         public string Nombre { get; set; }
         public string Identificacion { get; set; }
 
+        // Lista de cuentas asociadas al cliente (relación 1 a muchos)
+
         public List<Cuenta> Cuentas { get; set; } = new List<Cuenta>();
 
     }

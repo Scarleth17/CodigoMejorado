@@ -7,14 +7,19 @@ namespace CodigoMejorado
 {
     public partial class RegistrarDatos : Form
     {
+        // Contexto de base de datos
         private BancoSimpleContext _db = new BancoSimpleContext();
+
+        // Servicio que encapsula la lógica relacionada con cuentas y clientes
         private ServiceCuenta Sc;
+
 
         public RegistrarDatos()
         {
             InitializeComponent();
-            Sc = new ServiceCuenta(_db);
-            CargarDatos();
+            Sc = new ServiceCuenta(_db); // Inicializa el servicio con el contexto
+            CargarDatos(); // Carga datos en los DataGridView
+
 
 
         }

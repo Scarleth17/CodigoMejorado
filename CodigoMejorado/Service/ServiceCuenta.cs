@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace CodigoMejorado.Service
 {
+    // Servicio que contiene la lógica relacionada con la gestión de cuentas y clientes
     public class ServiceCuenta
     {
+
         private readonly BancoSimpleContext _context;
 
         public ServiceCuenta(BancoSimpleContext context)
@@ -25,6 +27,8 @@ namespace CodigoMejorado.Service
                 .FirstOrDefault(c => c.CuentaId == cuentaId)
                 ?? throw new InvalidOperationException($"Cuenta con ID {cuentaId} no encontrada.");
         }
+
+        // Obtiene todos los clientes junto con sus cuentas (incluso las inactivas si se omite el filtro global)
 
         public List<Cliente> ObtenerClientesConCuentas()
         {

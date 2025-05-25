@@ -14,17 +14,24 @@ namespace CodigoMejorado
     //Formulario para agregar una nueva cuenta asociada a un cliente.
     public partial class AgregarCuentasForm : Form
     {
+        // Proveedor de errores para validación visual en el formulario
         private readonly ErrorProvider _errorProvider = new ErrorProvider();
+
+        // ID del cliente al cual se le asociará la cuenta
         private readonly int _clienteId;
 
-        //Cuenta creada tras aceptar el formulario.
+        // Propiedad pública que contendrá la cuenta creada si se valida correctamente
         public Cuenta NuevaCuenta { get; private set; }
-        private int _cienteId;
+
+        // Constructor del formulario, recibe el ID del cliente como parámetro
         public AgregarCuentasForm(int clienteId)
         {
-            InitializeComponent();
-            _cienteId = clienteId;
-            _errorProvider.ContainerControl = this;
+            InitializeComponent(); // Inicializa los controles del formulario
+
+            _clienteId = clienteId; // Asigna el ID del cliente
+            _errorProvider.ContainerControl = this; // Configura el ErrorProvider para este formulario
+
+        
         }
 
         // Valida los campos requeridos del formulario.
